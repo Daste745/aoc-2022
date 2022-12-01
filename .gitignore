@@ -1,0 +1,5 @@
+venv/
+
+*pycache/
+
+*.input.txt

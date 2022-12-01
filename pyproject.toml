@@ -1,11 +1,11 @@
 [tool.poetry]
 name = "aoc-2022"
 version = "0.1.0"
-description = ""
+description = "Advent of Code 2022"
 authors = ["Daste <stefankar1000@gmail.com>"]
 license = "MIT"
 readme = "README.md"
-packages = [{include = "aoc_2022"}]
+packages = [{include = "aoc"}]
 
 [tool.poetry.dependencies]
 python = "^3.10"

@@ -1,8 +1,9 @@
-from aoc.day00.common import *
+from sys import stdin
 
 
 def main() -> None:
-    ...
+    for line in stdin.readlines():
+        ...
 
 
 if __name__ == "__main__":

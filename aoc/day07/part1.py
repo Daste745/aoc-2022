@@ -52,6 +52,40 @@ class File:
     size: int
 
 
+def print_directory_structure(start: Directory, indent: int = 0) -> None:
+    """
+    Print the directory structure similar to the one shown on the day 7 Advent of Code task page
+
+    Example output:
+    ```text
+    - / (dir, totsize=48381165)
+      - a (dir, totsize=94853)
+        - e (dir, totsize=584)
+        - i (file, size=584)
+        - f (file, size=29116)
+        - g (file, size=2557)
+        - h.lst (file, size=62596)
+      - b.txt (file, size=14848514)
+      - c.dat (file, size=8504156)
+      - d (dir, totsize=24933642)
+        - j (file, size=4060174)
+        - d.log (file, size=8033020)
+        - d.ext (file, size=5626152)
+        - k (file, size=7214296)
+    ```
+    """
+
+    prefix = "  " * indent + "- "
+    print(f"{prefix}{start.name} (dir, totsize={start.total_size})")
+
+    for node in start.children:
+        match node:
+            case Directory(name):
+                print_directory_structure(node, indent + 1)
+            case File(name, size):
+                print(f"  {prefix}{name} (file, {size=})")
+
+
 def main() -> None:
     root_directory = Directory("/", children=[], parent=None)
     current_location = root_directory
@@ -92,6 +126,8 @@ def main() -> None:
 
         elif command == "ls":
             continue
+
+    print_directory_structure(root_directory)
 
     size_sum = 0
     for dir in root_directory.walk_directories():
